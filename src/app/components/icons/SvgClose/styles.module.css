@@ -1,0 +1,11 @@
+.circle{
+    transition: all 0.2s ease-in-out;
+}
+
+.svg:hover .circle{
+    fill: rgba(254, 41, 41, 0.436);
+}
+
+.svg{
+    cursor: pointer;
+}

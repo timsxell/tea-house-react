@@ -1,0 +1,111 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 19px;
+    /* border-radius: 30px; */
+    border: 2px solid #000;
+    background: #FFF;
+    width: 292px;
+    padding: 0 10px 19px 10px;
+    height: fit-content;
+}
+
+.cardAdded {
+    border-color: #9FCFB2;
+    box-shadow: 0 0 10px rgba(159, 207, 178, 0.5),
+        /* Inner glow */
+        0 0 20px rgba(159, 207, 178, 0.4),
+        /* Middle glow */
+        0 0 30px rgba(159, 207, 178, 0.3),
+        /* Outer glow */
+        0 0 40px rgba(159, 207, 178, 0.2);
+}
+
+.image{
+    object-fit: cover;
+    /* border-radius: 30px; */
+    border: 1px solid black;
+    box-shadow: 0 0 5px rgba(44, 44, 44, 0.587);
+}
+
+.imageAdded{
+    box-shadow: 0 0 10px rgba(159, 207, 178, 0.8);
+    border: 1px solid rgba(159, 207, 178, 0.8);
+}
+
+.itemName {
+    width: 272px;
+    height: 44px;
+    /*two lines of 22px line height */
+    flex-shrink: 0;
+    color: #000;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22px;
+    /* 110% */
+    text-transform: uppercase;
+    white-space: initial;
+    /* Reset white-space */
+    display: -webkit-box;
+    /* Enable -webkit-line-clamp for compatibility */
+    -webkit-line-clamp: 2;
+    /* Limit to two lines */
+    -webkit-box-orient: vertical;
+    /* Set the orientation to vertical */
+    overflow: hidden;
+    /* Hide overflow text */
+    text-overflow: ellipsis;
+}
+
+.priceAndAmount {
+    display: flex;
+    width: 272px;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 6px;
+}
+
+.amount {
+    color: #000;
+    text-align: right;
+    font-size: 24px;
+    font-weight: 275;
+    line-height: 29px;
+    font-style: italic;
+    /* 120.833% */
+}
+
+.hidden{
+    visibility: hidden;
+}
+
+.displayNone{
+    display: none;
+}
+
+.price {
+    color: #000;
+    text-align: right;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 35px;
+    /* 109.375% */
+}
+
+.slider {
+    width: 267px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.circleAndAmount {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+}

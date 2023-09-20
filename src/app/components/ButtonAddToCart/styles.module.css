@@ -1,0 +1,39 @@
+.btn {
+    display: flex;
+    width: 272px;
+    height: 44px;
+    padding: 15px 0px;
+    justify-content: center;
+    align-items: center;
+    /* border-radius: 24px; */
+    cursor: pointer;
+
+    
+    text-align: center;
+    /* leading-trim: both;
+    text-edge: cap; */
+    /* font-family: Martel Sans; */
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 145%;
+    text-transform: uppercase;
+}
+
+.added{
+    background: #9FCFB2;
+    color: #000;
+}
+
+.notAdded{
+    background: #000;
+    color: #FFF;
+    transition: all 0.3s ease-in-out;
+}
+
+.notAdded:hover{
+    /* border: 2px solid rgba(159, 207, 178, 0.80); */
+    background: rgba(5, 36, 17, 0.7);
+    box-shadow: 4px 4px 8px 0px rgba(159, 207, 178, 0.70) inset;
+    box-shadow: 2px 2px 10px rgba(161, 248, 196, 0.5);
+}

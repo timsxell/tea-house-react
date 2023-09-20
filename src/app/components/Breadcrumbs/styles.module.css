@@ -1,0 +1,44 @@
+.breadcrumbs {
+    display: flex;
+    width: 95vw;
+    margin: 2rem 2vw 1rem 2vw;
+    align-items: baseline;
+    gap: 1rem;
+    /* margin-bottom: 2rem; */
+}
+
+.breadcrumbs a {
+    color: #b8b8b8;
+}
+
+.breadcrumbs a:visited {
+    color: #b8b8b8;
+}
+
+/* .current {
+    color: #000;
+} */
+
+.mainLink {
+    text-transform: lowercase;
+    font-size: 4rem;
+    font-weight: 500;
+}
+
+.catCrumb {
+    text-transform: lowercase;
+    font-size: 4rem;
+    font-weight: 500;
+}
+
+.subCrumb {
+    text-transform: lowercase;
+    font-size: 4rem;
+    font-weight: 500;
+}
+
+.subSubCrumb {
+    text-transform: lowercase;
+    font-size: 4rem;
+    font-weight: 500;
+}
