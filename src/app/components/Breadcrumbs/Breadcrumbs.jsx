@@ -4,6 +4,7 @@ import Link from 'next/link';
 import styles from './styles.module.css'
 import { usePathname } from 'next/navigation'
 import SvgChevron from '../icons/SvgChevron/SvgChevron';
+import useDeviceSize from '@/hooks/useDeviceSize';
 
 export default function Breadcrumbs({
 
@@ -14,8 +15,14 @@ export default function Breadcrumbs({
 
     const segmentNames = pathSegments.map(segment => segment.split('_').join(' '));
 
-    const isMobile = window.outerWidth < 500;
-    const isDesktopOrTablet = window.outerWidth >= 500;
+    const [width, height] = useDeviceSize()
+
+    // eslint-disable-next-line
+    // const isMobile = window.innerWidth < 500;
+    const isMobile = width < 500;
+    // eslint-disable-next-line
+    // const isDesktopOrTablet = window.innerWidth >= 500;
+    const isDesktopOrTablet = width >= 500;
 
     console.log({isMobile, isDesktopOrTablet})
 

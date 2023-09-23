@@ -10,6 +10,8 @@ import SvgFacebook from '../icons/SvgFacebook/SvgFacebook';
 import SvgInsta from '../icons/SvgInsta/SvgInsta';
 import SvgTelegram from '../icons/SvgTelegram/SvgTelegram';
 
+import useDeviceSize from '@/hooks/useDeviceSize';
+
 
 
 export default function Footer({
@@ -29,8 +31,14 @@ export default function Footer({
     let bottomClassName = `${styles.bottom} ${isHovered ? styles.bottomHover : ''}`
     let bottomTextClassName = `${styles.bottomP} ${isHovered ? styles.bottomHoverP : ''}`
 
-    const isMobile = window.innerWidth < 500;
-    const isDesktopOrTablet = window.innerWidth >= 500;
+    const [width, height] = useDeviceSize()
+
+    // eslint-disable-next-line
+    // const isMobile = window.innerWidth < 500;
+    const isMobile = width < 500;
+    // eslint-disable-next-line
+    // const isDesktopOrTablet = window.innerWidth >= 500;
+    const isDesktopOrTablet = width >= 500;
 
     return (
         <footer className={styles.footer}>

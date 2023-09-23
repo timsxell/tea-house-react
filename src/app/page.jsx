@@ -13,14 +13,21 @@ import historyMobile from '@/../public/images/mobile/history.jpg'
 import HomepageSection from "./components/HomepageSection/HomepageSection";
 import { useGetItemsQuery, usePrefetch } from "@/store/services/itemsApi";
 import { useEffect } from "react";
+import useDeviceSize from '@/hooks/useDeviceSize'
 
 
 
 
 export default function HomePage({ }) {
 
-  const isMobile = window.innerWidth < 500;
-  const isDesktopOrTablet = window.innerWidth >= 500;
+  const [width, height] = useDeviceSize()
+
+  // eslint-disable-next-line
+  // const isMobile = window.innerWidth < 500;
+  const isMobile = width < 500;
+  // eslint-disable-next-line
+  // const isDesktopOrTablet = window.innerWidth >= 500;
+  const isDesktopOrTablet = width >= 500;
 
 
   const prefetch = usePrefetch('getItems');
@@ -36,7 +43,7 @@ export default function HomePage({ }) {
   return (
     <div >
       <HomepageSection id='firstSection' text={'store'} url={'/catalog'} imgUrl={(isMobile && !isDesktopOrTablet) ? storeMobile : store} cardTopPos={isMobile ? 55 : 20} cardLeftPos={isMobile ? 10 : 10} imgTopPos={30} />
-      <HomepageSection text={'catering'} url={'/catalog'} imgUrl={(isMobile && !isDesktopOrTablet) ? cateringMobile : catering} cardTopPos={isMobile ? 55 : 60} cardLeftPos={isMobile ? 10 : 60} imgTopPos={isMobile ? 70 : 0}/>
+      <HomepageSection text={'catering'} url={'/catalog'} imgUrl={(isMobile && !isDesktopOrTablet) ? cateringMobile : catering} cardTopPos={isMobile ? 55 : 60} cardLeftPos={isMobile ? 10 : 60} imgTopPos={isMobile ? 70 : 0} />
       <HomepageSection text={'tea walks'} url={'/catalog'} imgUrl={(isMobile && !isDesktopOrTablet) ? walksMobile : walks} cardTopPos={isMobile ? 55 : 20} cardLeftPos={isMobile ? 10 : 56} imgLeftPos={isMobile ? 40 : 0} />
       <HomepageSection text={'history'} url={'/catalog'} imgUrl={(isMobile && !isDesktopOrTablet) ? historyMobile : history} cardTopPos={isMobile ? 55 : 60} cardLeftPos={isMobile ? 10 : 10} imgTopPos={isMobile ? 60 : 40} />
     </div>

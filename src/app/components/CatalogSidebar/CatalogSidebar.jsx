@@ -6,6 +6,7 @@ import { useState } from "react";
 import SvgChevron from "../icons/SvgChevron/SvgChevron";
 import { usePathname } from "next/navigation";
 import { useEffect } from "react";
+import useDeviceSize from "@/hooks/useDeviceSize";
 
 export default function CatalogSidebar({
     categories
@@ -25,8 +26,14 @@ export default function CatalogSidebar({
         closeSidebar();
     }, [pathname]);
 
-    const isMobile = window.outerWidth < 500;
-    const isDesktopOrTablet = window.outerWidth >= 500;
+    const [width, height] = useDeviceSize()
+
+    // eslint-disable-next-line
+    // const isMobile = window.innerWidth < 500;
+    const isMobile = width < 500;
+    // eslint-disable-next-line
+    // const isDesktopOrTablet = window.innerWidth >= 500;
+    const isDesktopOrTablet = width >= 500;
 
     return (
         <aside className={styles.sidebar} >
