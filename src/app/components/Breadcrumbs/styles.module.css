@@ -4,8 +4,10 @@
     margin: 2rem 2vw 1rem 2vw;
     align-items: baseline;
     gap: 1rem;
+}
 
-    @media screen and (max-device-width: 400px) {
+@media screen and (max-device-width: 400px) {
+    .breadcrumbs{
         flex-direction: column;
         gap: 0.3rem;
         align-items: flex-end;
@@ -14,7 +16,10 @@
 
 .breadcrumbs a {
     color: #b8b8b8;
-    @media screen and (max-device-width: 400px) {
+}
+
+@media screen and (max-device-width: 400px) {
+    .breadcrumbs a{
         text-align: end;
     }
 }
@@ -30,18 +35,26 @@
 .mainLink {
     text-transform: lowercase;
     font-size: 4rem;
-    font-weight: 500;
-    @media screen and (max-device-width: 400px) {
-        font-size: 1.5rem;
-    }
+    font-weight: 500;   
 }
 
 .catCrumb {
     text-transform: lowercase;
     font-size: 4rem;
     font-weight: 500;
-    @media screen and (max-device-width: 400px) {
+}
+@media screen and (max-device-width: 400px) {
+    .mainLink{
+        font-size: 1.5rem;
+    }
+    .catCrumb{
         font-size: 2rem;
+    }
+    .subCrumb{
+        font-size: 2.5rem;
+    }
+    .subSubCrumb{
+        font-size: 3rem;
     }
 }
 
@@ -49,16 +62,10 @@
     text-transform: lowercase;
     font-size: 4rem;
     font-weight: 500;
-    @media screen and (max-device-width: 400px) {
-        font-size: 2.5rem;
-    }
 }
 
 .subSubCrumb {
     text-transform: lowercase;
     font-size: 4rem;
     font-weight: 500;
-    @media screen and (max-device-width: 400px) {
-        font-size: 3rem;
-    }
 }

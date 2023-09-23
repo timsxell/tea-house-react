@@ -1,13 +1,15 @@
+@media screen and (max-device-width:500px) {
+    .page{
+        padding: 2rem 1rem;
+    }
+}
+
 .page{
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     padding: 4rem 2rem;
     min-height: 70vh;
-
-    @media screen and (max-device-width:500px) {
-        padding: 2rem 1rem;
-    }
 }
 
 .wrapper{
@@ -21,8 +23,10 @@
     font-size: 4rem;
     font-weight: 500;
     margin-bottom: 2rem;
+}
 
-    @media screen and (max-device-width:500px) {
+@media screen and (max-device-width:500px) {
+    .heading{
         font-size: 3rem;
     }
 }
@@ -35,8 +39,10 @@
     font-size: 3rem;
     line-height: 110%;
     border-bottom: 1px solid black;
+}
 
-    @media screen and (max-device-width:500px) {
+@media screen and (max-device-width:500px) {
+    .total{
         font-size: 2rem;
     }
 }

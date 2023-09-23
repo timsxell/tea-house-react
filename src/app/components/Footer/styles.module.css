@@ -12,8 +12,10 @@
     justify-content: space-between;
     align-items: flex-end;
     padding: 1.5rem 2.5vw;
+}
 
-    @media screen and (max-device-width:400px) {
+@media screen and (max-device-width:400px) {
+    .top {
         align-items: center;
     }
 }
@@ -31,8 +33,10 @@
     color: #000;
     transition: all 200ms ease-in-out;
     text-align: center;
+}
 
-    @media screen and (max-device-width:400px) {
+@media screen and (max-device-width:400px) {
+    .left a {
         border: 0px;
     }
 }
@@ -66,16 +70,16 @@
 }
 
 .right {
-
     text-align: right;
+}
 
-    @media screen and (max-device-width:400px) {
+@media screen and (max-device-width:400px) {
+    .right {
         display: flex;
         height: 100%;
         flex-direction: column;
         /* justify-content: space-evenly; */
         gap: 4rem;
-
     }
 }
 

@@ -24,8 +24,10 @@
     display: flex;
     flex-direction: row;
     gap: 1rem;
+}
 
-    @media screen and (max-device-width:500px) {
+@media screen and (max-device-width:500px) {
+    .imageAndName{
         flex-direction: column-reverse;
     }
 }
