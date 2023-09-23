@@ -24,10 +24,10 @@ export default function HomePage({ }) {
 
   // eslint-disable-next-line
   // const isMobile = window.innerWidth < 500;
-  const isMobile = width < 500;
+  const isMobile = width < 800;
   // eslint-disable-next-line
   // const isDesktopOrTablet = window.innerWidth >= 500;
-  const isDesktopOrTablet = width >= 500;
+  const isDesktopOrTablet = width >= 800;
 
 
   const prefetch = usePrefetch('getItems');
@@ -35,7 +35,7 @@ export default function HomePage({ }) {
   useEffect(() => {
     const timer = setTimeout(() => {
       prefetch('');
-    }, 2000);
+    }, 3500);
 
     return () => clearTimeout(timer);
   }, [prefetch]);
