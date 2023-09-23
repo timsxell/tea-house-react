@@ -14,7 +14,7 @@
     padding: 1.5rem 2.5vw;
 }
 
-@media screen and (max-device-width:600px) {
+@media screen and (max-width:600px) {
     .top {
         align-items: center;
     }
@@ -35,15 +35,17 @@
     text-align: center;
 }
 
-@media screen and (max-device-width:600px) {
+@media screen and (max-width:600px) {
     .left a {
         border: 0px;
     }
 }
 
-.left a:hover {
-    color: #ffffff;
-    background-color: #000;
+@media screen and (min-width:500px) {
+    .left a:hover {
+        color: #ffffff;
+        background-color: #000;
+    }
 }
 
 .left a:visited {
@@ -73,7 +75,7 @@
     text-align: right;
 }
 
-@media screen and (max-device-width:600px) {
+@media screen and (max-width:600px) {
     .right {
         display: flex;
         height: 100%;
