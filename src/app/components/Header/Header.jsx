@@ -6,8 +6,9 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useSelector } from "react-redux";
 import SvgCart from '../icons/SvgCart/SvgCart';
+import SvgHamburger from '../icons/SvgHamburger/SvgHamburger';
+import SvgChevron from '../icons/SvgChevron/SvgChevron';
 import { useState } from 'react';
-
 
 
 export default function Header({ }) {
@@ -18,7 +19,7 @@ export default function Header({ }) {
     const cartEmpty = totalItemsCount <= 0
 
     const mockLink = '/';
-    
+
     const currentPath = usePathname().split('/');
     const cartLink = (cartEmpty || currentPath[1] === 'cart') ? '/catalog' : '/cart'
 
@@ -30,19 +31,28 @@ export default function Header({ }) {
 
     const cartBadgeText = isHovered ? `${totalPrice}${'\u20AC'}` : totalItemsCount
 
+    let [isHamburgerOpened, setIsHamburgerOpened] = useState(false);
+
+    let hamburgerOpenedClass = `${isHamburgerOpened ? styles.hamburgerOpened : styles.hamburgerClosed}`
+
     return (
-        <header className={styles.header}>
-            <div className={styles.left}>
-                <Link href={mockLink} className={styles.leftLink}>caTeRing</Link>
-                <Link href={mockLink} className={styles.leftLink}>tea Walks</Link>
-                <Link href={mockLink} className={styles.leftLink}>HisTory</Link>
+        <header className={`${hamburgerOpenedClass} ${styles.header}`}>
+            <div className={styles.leftAndMid}>
+                <div className={styles.left} >
+                    <div className={styles.hamburger} onClick={() => setIsHamburgerOpened(!isHamburgerOpened)}>
+                        {isHamburgerOpened ? <SvgChevron pointTo='left' /> : <SvgHamburger color={'black'} />}
+                    </div>
+                    <Link href={mockLink} className={styles.leftLink}>caTeRing</Link>
+                    <Link href={mockLink} className={styles.leftLink}>tea Walks</Link>
+                    <Link href={mockLink} className={styles.leftLink}>HisTory</Link>
+                </div>
+                <div className={styles.mid}>
+                    <Link href={mockLink} className={styles.mainLink}>tea HousE</Link>
+                </div>
             </div>
-            <div className={styles.mid}>
-                <Link href={mockLink} className={styles.mainLink}>tea HousE</Link>
-            </div>
-            <Link className={cartIconClass} href={cartLink}  onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
-                {((cartEmpty && currentPath[1] !== 'catalog') || currentPath[1] === 'cart') && <p className={styles.leftLink}>store</p>}
-                {(!cartEmpty && currentPath[1] !== 'cart' )&& <SvgCart width={30} height={30}/>}
+            <Link className={cartIconClass} href={cartLink} onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
+                {((cartEmpty && currentPath[1] !== 'catalog') || currentPath[1] === 'cart') && <p className={styles.rightLink}>store</p>}
+                {(!cartEmpty && currentPath[1] !== 'cart') && <SvgCart width={30} height={30} />}
                 {!cartEmpty && currentPath[1] !== 'cart' && <p>{cartBadgeText}</p>}
             </Link>
 

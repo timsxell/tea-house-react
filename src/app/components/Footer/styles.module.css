@@ -1,48 +1,57 @@
-.footer{
+.footer {
     display: flex;
     flex-direction: column;
     background-color: #e6e6e6;
+    width: 100vw;
     /* padding: 3rem 10rem; */
 }
 
-.top{
+.top {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: flex-end;
-    padding: 1.5rem 2.5vw
+    padding: 1.5rem 2.5vw;
+
+    @media screen and (max-width:400px) {
+        align-items: center;
+    }
 }
 
-.left{
+.left {
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
 
-.left a{
+.left a {
     border: #000 solid 1px;
     /* border-radius: 8px; */
     padding: 2px 8px;
     color: #000;
     transition: all 200ms ease-in-out;
     text-align: center;
+
+    @media screen and (max-width:400px) {
+        border: 0px;
+    }
 }
 
-.left a:hover{
+.left a:hover {
     color: #ffffff;
     background-color: #000;
 }
 
-.left a:visited{
+.left a:visited {
     color: #000;
 }
 
-.left a:visited:hover{
+.left a:visited:hover {
     color: #ffffff;
     background-color: #000;
 }
 
-.mid{
+.mid {
     display: flex;
     height: 100%;
     /* padding-top: 0.5rem; */
@@ -52,54 +61,67 @@
     gap: 0.5rem;
 }
 
-.mid a{
+.mid a {
     color: #000;
 }
 
-.right{
+.right {
+
     text-align: right;
+
+    @media screen and (max-width:400px) {
+        display: flex;
+        height: 100%;
+        flex-direction: column;
+        /* justify-content: space-evenly; */
+        gap: 4rem;
+
+    }
 }
 
-.right a:visited{
+.right a:visited {
     color: #000;
 }
 
-.right a:visited:hover{
-    text-decoration: underline;
-}
-.right a:hover{
+.right a:visited:hover {
     text-decoration: underline;
 }
 
-.bottom{
+.right a:hover {
+    text-decoration: underline;
+}
+
+.bottom {
     display: flex;
     justify-content: flex-end;
     background-color: black;
-    padding: 0.7rem 4rem;
+    padding: 0.7rem 2vw;
     gap: 0.5rem;
     transition: all 200ms ease-in-out;
 }
 
-.bottomHover{
+.bottomHover {
     background-color: rgb(150, 0, 170);
 }
 
-.bottomP{
+.bottomP {
     text-transform: lowercase;
     color: #ffffffe2;
 }
 
-.bottom a{
+.bottom a {
     color: rgb(150, 0, 170);
-    transition: all 200ms ease-in-out;    
+    transition: all 200ms ease-in-out;
 }
 
-.bottom a:hover{
+.bottom a:hover {
     color: #000;
 }
 
-.bottom a:visited{
+.bottom a:visited {
     color: rgb(224, 0, 253);
 }
-.bottom a:visited:hover{
-    color: #000;}
+
+.bottom a:visited:hover {
+    color: #000;
+}

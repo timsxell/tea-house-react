@@ -2,40 +2,38 @@
 
 import { useState } from "react"
 import styles from './styles.module.css'
-// import { useAdded } from "../ItemCard/ItemCard"
 import { formular } from "@/app/fonts/fonts";
+import Link from "next/link";
 
-import { useDispatch } from "react-redux";
-import { cartSlice } from "@/store/features/cart";
 
 export default function ButtonAddToCart({
     isAdded,
     handleClick,
-    itemId
 }){
 
-    // const {isAdded, handleButtonClick} = useAdded();
+    const [isHovered, setIsHovered] = useState(false);
 
-    const dispatch = useDispatch()
-
-    // const handleButtonClick2 = () => {
-    //     handleButtonClick();
-    //     dispatch(cartSlice.actions.increment(itemId))
-    // }
-
-    return(
-        <div 
-        style={formular.style}
-        onClick={handleClick} 
-        className={`${styles.btn} ${isAdded ? styles.added : styles.notAdded}`} >
-            {isAdded ? 'ADDED' : 'ADD TO CART'}
-        </div>
-    )
+    if(isAdded){
+        return(
+            <Link 
+            href={'/cart'}
+            style={formular.style}
+            className={`${styles.btn} ${isAdded ? styles.added : styles.notAdded}`} >
+                {isAdded ? isHovered ? 'GO TO CART' : 'ADDED' : 'ADD TO CART'}
+            </Link>
+        )
+    }
+    else{
+        return(
+            <div 
+            style={formular.style}
+            onClick={handleClick} 
+            onMouseOver={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+            className={`${styles.btn} ${isAdded ? styles.added : styles.notAdded}`} >
+                {isAdded ? isHovered ? 'GO TO CART' : 'ADDED' : 'ADD TO CART'}
+            </div>
+        )
+    }
+    
 }
-
-{/* <button
-                    onClick={() => {dispatch(cartSlice.actions.addItem({
-                        item: item,
-                        amount: 100,
-                        priceForAmount: 33,
-                    }))}} */}

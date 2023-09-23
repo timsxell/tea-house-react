@@ -4,6 +4,10 @@
     justify-content: flex-start;
     padding: 4rem 2rem;
     min-height: 70vh;
+
+    @media screen and (max-width:500px) {
+        padding: 2rem 1rem;
+    }
 }
 
 .wrapper{
@@ -17,6 +21,10 @@
     font-size: 4rem;
     font-weight: 500;
     margin-bottom: 2rem;
+
+    @media screen and (max-width:500px) {
+        font-size: 3rem;
+    }
 }
 
 .total{
@@ -27,6 +35,10 @@
     font-size: 3rem;
     line-height: 110%;
     border-bottom: 1px solid black;
+
+    @media screen and (max-width:500px) {
+        font-size: 2rem;
+    }
 }
 
 .totalPrice{

@@ -4,11 +4,19 @@
     margin: 2rem 2vw 1rem 2vw;
     align-items: baseline;
     gap: 1rem;
-    /* margin-bottom: 2rem; */
+
+    @media screen and (max-width: 400px) {
+        flex-direction: column;
+        gap: 0.3rem;
+        align-items: flex-end;
+    }
 }
 
 .breadcrumbs a {
     color: #b8b8b8;
+    @media screen and (max-width: 400px) {
+        text-align: end;
+    }
 }
 
 .breadcrumbs a:visited {
@@ -23,22 +31,34 @@
     text-transform: lowercase;
     font-size: 4rem;
     font-weight: 500;
+    @media screen and (max-width: 400px) {
+        font-size: 1.5rem;
+    }
 }
 
 .catCrumb {
     text-transform: lowercase;
     font-size: 4rem;
     font-weight: 500;
+    @media screen and (max-width: 400px) {
+        font-size: 2rem;
+    }
 }
 
 .subCrumb {
     text-transform: lowercase;
     font-size: 4rem;
     font-weight: 500;
+    @media screen and (max-width: 400px) {
+        font-size: 2.5rem;
+    }
 }
 
 .subSubCrumb {
     text-transform: lowercase;
     font-size: 4rem;
     font-weight: 500;
+    @media screen and (max-width: 400px) {
+        font-size: 3rem;
+    }
 }

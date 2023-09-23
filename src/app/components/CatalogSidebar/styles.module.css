@@ -1,6 +1,24 @@
-.sidebar{
-    width: 324px;
+.sidebar {
+    /* width: 55vw; */
     display: flex;
     flex-direction: column;
     margin: 20px;
+
+    @media screen and (max-width: 400px) {
+        position: absolute;
+        top: 11vh;
+        left: 3vw;
+        z-index: 3;
+        padding: 0.7rem;
+        /* background-color: #E6E6E6; */
+        background: rgba(114, 114, 114, 0.4);
+        backdrop-filter: blur(4px);
+        border: 1px solid rgba(114, 114, 114, 0.7);
+
+
+    }
+}
+
+.svg{
+    padding: 0.5rem;
 }

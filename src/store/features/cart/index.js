@@ -28,6 +28,5 @@ export const cartSlice = createSlice({
             const { [payload]: removedItem, ...updatedCart } = state;
             return updatedCart;
         },
-
     }
 });

@@ -10,10 +10,7 @@ export default function CartPage({ }) {
     const items = useSelector(state => selectCartModule(state));
 
     const totalPrice = useSelector(state => selectTotalPrice(state))
-    const cartEmpty = Object.keys(items).length > 0 ? false : true;
-
-    console.log(Object.keys(items).length);
-
+    const cartEmpty = !(Object.keys(items).length > 0)
 
 
     return (

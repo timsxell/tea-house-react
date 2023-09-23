@@ -7,6 +7,8 @@ import { cartSlice } from '@/store/features/cart';
 import { useDispatch } from 'react-redux';
 import { usePathname } from 'next/navigation';
 import { formular } from '@/app/fonts/fonts';
+import { useSelector } from 'react-redux';
+import { isItemInCart } from '@/store/features/cart/selectors';
 
 function calcPrice(priceFor100, amount) {
     return ((priceFor100 / 100) * amount).toFixed(2);
@@ -49,7 +51,10 @@ export default function ItemCard({
     const showGrams = item.category !== 'teaware';
     // const showGrams = path[2] !== 'teaware';
 
-    const [isAdded, setIsAdded] = useState(false);
+    const isAdded = useSelector(state => isItemInCart(state)(item.id))
+
+
+    // const [isAdded, setIsAdded] = useState(false);
     const [selectedAmount, setSelectedAmount] = useState(100);
 
     const dispatch = useDispatch();
@@ -61,13 +66,16 @@ export default function ItemCard({
     }
 
     const addToCartClick = () => {
-        setIsAdded(true);
-        dispatch(cartSlice.actions.addItem({
-            item: item,
-            amount: selectedAmount,
-            priceForAmount: Number(calcPrice(item.priceFor100, selectedAmount)),
-        }));
+        if (!isAdded) {
+            // setIsAdded(true);
+            dispatch(cartSlice.actions.addItem({
+                item: item,
+                amount: selectedAmount,
+                priceForAmount: Number(calcPrice(item.priceFor100, selectedAmount)),
+            }));
+        }  
     }
+
 
     return (
         <div className={isAdded ? `${styles.card} ${styles.cardAdded}` : `${styles.card}`}>
@@ -79,7 +87,7 @@ export default function ItemCard({
             />
             <Link style={formular.style} className={styles.itemName} href={``}>{item.name}</Link>
             <div className={styles.priceAndAmount}>
-                <p className={showGrams ? `${styles.amount}` : `${styles.amount} ${styles.hidden}`} >{selectedAmount}g /</p>
+                <p className={showGrams ? `${styles.amount}` : `${styles.amount} ${styles.hidden}`} >{`${selectedAmount}g /`}</p>
                 <p className={styles.price}>{calcPrice(item.priceFor100, selectedAmount)}{'\u20AC'}</p>
             </div>
             <div className={showGrams ? `${styles.slider}` : `${styles.displayNone}`}>
