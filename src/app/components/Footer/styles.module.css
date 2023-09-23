@@ -14,7 +14,7 @@
     padding: 1.5rem 2.5vw;
 }
 
-@media screen and (max-device-width:400px) {
+@media screen and (max-device-width:600px) {
     .top {
         align-items: center;
     }
@@ -35,7 +35,7 @@
     text-align: center;
 }
 
-@media screen and (max-device-width:400px) {
+@media screen and (max-device-width:600px) {
     .left a {
         border: 0px;
     }
@@ -73,7 +73,7 @@
     text-align: right;
 }
 
-@media screen and (max-device-width:400px) {
+@media screen and (max-device-width:600px) {
     .right {
         display: flex;
         height: 100%;
