@@ -7,7 +7,7 @@
 }
 
 .section{
-    @media screen and (max-width: 400px){
+    @media screen and (max-device-width: 400px){
         height: 50vh;
     }
 }
@@ -65,7 +65,7 @@
     line-height: normal;
     text-transform: lowercase;
 
-    @media screen and (max-width: 400px) {
+    @media screen and (max-device-width: 400px) {
         font-size: 3rem;
     }
 

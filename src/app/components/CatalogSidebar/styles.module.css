@@ -4,7 +4,7 @@
     flex-direction: column;
     margin: 20px;
 
-    @media screen and (max-width: 400px) {
+    @media screen and (max-device-width: 400px) {
         position: absolute;
         top: 11vh;
         left: 3vw;

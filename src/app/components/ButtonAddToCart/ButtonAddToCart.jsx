@@ -19,7 +19,7 @@ export default function ButtonAddToCart({
             href={'/cart'}
             style={formular.style}
             className={`${styles.btn} ${isAdded ? styles.added : styles.notAdded}`} >
-                {isAdded ? isHovered ? 'GO TO CART' : 'ADDED' : 'ADD TO CART'}
+                {'GO TO CART'}
             </Link>
         )
     }
@@ -31,7 +31,7 @@ export default function ButtonAddToCart({
             onMouseOver={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
             className={`${styles.btn} ${isAdded ? styles.added : styles.notAdded}`} >
-                {isAdded ? isHovered ? 'GO TO CART' : 'ADDED' : 'ADD TO CART'}
+                {isAdded ? 'ADDED' : 'ADD TO CART'}
             </div>
         )
     }
