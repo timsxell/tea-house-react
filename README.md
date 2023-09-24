@@ -1,34 +1,54 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+#TEA HOUSE - NWD projekat
+*** sajt [uživo](tea-house-react.vercel.app)*** 
 
-## Getting Started
+[TOC]
 
-First, run the development server:
+## Tehnlogije korišćene
+- React
+> JS biblioteka za pravljenje UI koja se kompajluje u JS
+- Next 
+> React frejmvork za server-side komponente, routing, bundlinig  i optimizaciju. U sebi sadrži i Webpack
+- Redux
+> Stejt menadžer za upravljanje stanjem komponenata (npr. stanje u korpi)
+- Redux Toolkit (RTK) query
+> Za optimizovano preuzimanje podataka sa servera
+- ESLint
+> Za proveru validnosti koda 
+- NodeJS
+> Runtime za JS na strani servera
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+Za potrebe sajta je takođe bio napravljen mini [server](https://github.com/timsxell/server_teaHouse) na NodeJS koji sadrži podatke o proizvodima i šalje ih preko GET rekvestova. Server je takođe [hostovan](https://europe-west3-tea-house-server.cloudfunctions.net/function-1/api/items) koristeći Google Cloud Functions
+
+## Pokretanje lokalno
+Rad sajta mozete pogledati [uživo](tea-house-react.vercel.app), a izvorni kod se nalazi u ovom repozitorijumu [(/src)](https://github.com/timsxell/tea-house-react/tree/main/src), ali takođe možete čitav projekat kompajlovati i pokrenuti kod sebe na kompjuteru lokalno:
+### Predekspozicije 
+Da bi se projekat pokrenuo lokalno potrebno je da na kompjuteru imate:
+- [git](https://github.com/git-guides/install-git)
+- [node](https://nodejs.org/en/download)
+- [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) 
+
+### Klonirati git projekat 
 ```
+git clone https://github.com/timsxell/tea-house-react.git
+```
+### Ući u kloniranu direktoriju
+```
+cd tea-house-react
+```
+### Instalirati zavisnosti projekta
+```
+npm i
+```
+### Pokrenuti projekat
+Mozete ili pokrenuti development verziju gde će se svaka izmena u kodu odmah odraziti na sajtu:
+```
+npm run dev
+```
+Ili pokrenuti build production verzije gde će se čitav kod kompajlovati u običan HTML, CSS i JS unutar foldera .next/
+```
+npm run build
+npm run start
+```
+> Sajt će biti pokrenut na localhost:3000
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
