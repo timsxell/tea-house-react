@@ -1,7 +1,7 @@
-#TEA HOUSE - NWD projekat
-*** sajt [uživo](tea-house-react.vercel.app)*** 
+# TEA HOUSE - NWD projekat
+https://tea-house-react.vercel.app/
 
-[TOC]
+Aktivne stranice su [glavna](https://tea-house-react.vercel.app/), [prodavnica](https://tea-house-react.vercel.app/catalog) i [korpa](https://tea-house-react.vercel.app/cart)
 
 ## Tehnlogije korišćene
 - React
