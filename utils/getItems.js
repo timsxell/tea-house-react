@@ -15,9 +15,7 @@ export async function getItemsFromSheet(){
         'id', 'nameRu', 'price', 'isUnit', 'isPressed', 'totalWeight',
         'parentCategoryId', 'amountInStock', 'descriptionRu',
         'imgSrc1', 'imgSrc2', 'imgSrc3', 'isFeatured', 'nameSr', 'descriptionSr'
-      ]
-
-    // let items = response.data.values.map(row => Object.fromEntries(propertyNames.map((prop, i) => [prop, row[i]])));
+    ]
 
     let items = response.data.values.map(row => {
         const obj = {};
@@ -40,19 +38,8 @@ export async function getItemsFromSheet(){
           }
         });
         return obj;
-      });
+    });
 
-    // response.data.values.forEach(item => {
-    //     let {id, nameRu, price, isUnit, isPressed, totalWeight, parentCategoryId, amountInStock, descriptionRu, imgSrc1, imgSrc2, imgSrc3, isFeatured, nameSr, descriptionSr} = [...item];
-    //     items.push({id, nameRu, price, isUnit, isPressed, totalWeight, parentCategoryId, amountInStock, descriptionRu, imgSrc1, imgSrc2, imgSrc3, isFeatured, nameSr, descriptionSr});
-    // })
-    // = response.data.values.map( item => {{id, nameRu, price, isUnit, isPressed, totalWeight, parentCategoryId, amountInStock, descriptionRu, imgSrc1, imgSrc2, imgSrc3, isFeatured, nameSr, descriptionSr} = item});
-
-
-
-    // console.log(response.data.values);
-    // console.log(title);
-    // console.log(content);
 
     return items;
 }

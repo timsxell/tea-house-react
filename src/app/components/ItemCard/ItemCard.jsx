@@ -1,3 +1,5 @@
+'use client'
+
 import styles from './styles.module.css';
 import ButtonAddToCart from '../ButtonAddToCart/ButtonAddToCart';
 import Image from 'next/image';
@@ -8,10 +10,9 @@ import { useDispatch } from 'react-redux';
 import { formular } from '@/app/fonts/fonts';
 import { useSelector } from 'react-redux';
 import { isItemInCart } from '@/store/features/cart/selectors';
-import { STATIC_URL } from '@/store/services/serverConstants';
 
-function calcPrice(priceFor100, amount) {
-    return ((priceFor100 / 100) * amount).toFixed(2);
+function calcPrice(basePrice, basePriceAmount, amount) {
+    return ((basePrice / basePriceAmount) * amount).toFixed(2);
 }
 
 function CircleAndAmount({
@@ -39,14 +40,21 @@ export default function ItemCard({
     // showGrams = true,
 }) {
 
-    const AMOUNTS = [
+    const amounts = item.isPressed ?
+    [
+        100,
+        200,
+        item.totalWeight
+    ] : [
         50,
         100,
         200,
         300
     ]
 
-    const showGrams = item.parentCategoryId !== '040101' || item.parentCategoryId !== '040102' || item.parentCategoryId !== '0402'
+    const basePrice = item.isPressed ? 100 : 50
+
+    const showGrams = !(item.isUnit)
 
     const isAdded = useSelector(state => isItemInCart(state)(item.id))
 
@@ -60,37 +68,35 @@ export default function ItemCard({
         }
     }
 
+    let priceForAmount = item.isUnit ? item.price : calcPrice(item.price, basePrice, selectedAmount)
+
     const addToCartClick = () => {
         if (!isAdded) {
             dispatch(cartSlice.actions.addItem({
                 item: item,
                 amount: selectedAmount,
-                priceForAmount: Number(calcPrice(item.priceFor100, selectedAmount)),
+                priceForAmount: priceForAmount,
             }));
         }  
     }
 
-    // const hasMultipleImages = Array.isArray(item.imgSrc) && item.imgSrc.length > 1;
-    const makeAbsolutePath = (relative) => `${STATIC_URL}${relative}`;
-
     return (
         <div className={isAdded ? `${styles.card} ${styles.cardAdded}` : `${styles.card}`}>
-            <Image alt={item.name} className={isAdded ? `${styles.image} ${styles.imageAdded}` : `${styles.image}`}
-                src={makeAbsolutePath(item.imgSrc[0])}
+            <Image alt={item.nameRu} className={isAdded ? `${styles.image} ${styles.imageAdded}` : `${styles.image}`}
+                src={item.imgSrc1}
                 width={290}
                 height={220}
 
             />
-            <Link style={formular.style} className={styles.itemName} href={``}>{item.name}</Link>
+            <Link style={formular.style} className={styles.itemName} href={``}>{item.nameRu}</Link>
             <div className={styles.priceAndAmount}>
                 <p className={showGrams ? `${styles.amount}` : `${styles.amount} ${styles.hidden}`} >{`${selectedAmount}g /`}</p>
-                <p className={styles.price}>{calcPrice(item.priceFor100, selectedAmount)}{'\u20AC'}</p>
+                <p className={styles.price}>{priceForAmount}{'\u20AC'}</p>
             </div>
             <div className={showGrams ? `${styles.slider}` : `${styles.displayNone}`}>
-                <CircleAndAmount handleClick={() => selectAmountClick(AMOUNTS[0])} amount={AMOUNTS[0]} isAdded={isAdded} isSelected={selectedAmount === AMOUNTS[0]} />
-                <CircleAndAmount handleClick={() => selectAmountClick(AMOUNTS[1])} amount={AMOUNTS[1]} isAdded={isAdded} isSelected={selectedAmount === AMOUNTS[1]} />
-                <CircleAndAmount handleClick={() => selectAmountClick(AMOUNTS[2])} amount={AMOUNTS[2]} isAdded={isAdded} isSelected={selectedAmount === AMOUNTS[2]} />
-                <CircleAndAmount handleClick={() => selectAmountClick(AMOUNTS[3])} amount={AMOUNTS[3]} isAdded={isAdded} isSelected={selectedAmount === AMOUNTS[3]} />
+                {amounts.map(amount => 
+                        <CircleAndAmount handleClick={() => selectAmountClick(amount)} amount={amount} isAdded={isAdded} isSelected={selectedAmount === amount} key={amount}/>
+                )} 
             </div>
             <ButtonAddToCart handleClick={addToCartClick} isAdded={isAdded} />
         </div>
