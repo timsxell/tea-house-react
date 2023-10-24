@@ -4,6 +4,9 @@ import SidebarSubSubCategory from "../SidebarSubSubCategory/SidebarSubSubCategor
 import SvgArrow from "../icons/SvgArrow/SvgArrow";
 import Link from "next/link";
 
+import categories from "@/categories/categories";
+
+
 export default function SidebarSubCategory({
   subcategory,
   serverPath
@@ -15,24 +18,26 @@ export default function SidebarSubCategory({
     setIsOpen(!isOpen);
   };
 
-  const serverName = subcategory.serverName;
+  const serverName = subcategory.name.split(' ').join('_');
   const currentServerPath = `${serverPath}${serverName}/`
+
+  const subsubcategories = categories.getOldestChildren(subcategory.id)
 
   return (
     <div>
       <div className={styles.sidebarSubCategory} >
         <Link className={styles.subCategoryName} href={`/catalog/${currentServerPath}`}
-        style={subcategory.subsubcategories ? {} : {width: '100%'}}
+        style={!!subsubcategories.length ? {} : {width: '100%'}}
         >{subcategory.name}</Link>
-        {subcategory.subsubcategories && <div className={styles.svgContainer} onClick={toggleOpen}>
+        {!!subsubcategories.length && <div className={styles.svgContainer} onClick={toggleOpen}>
           <SvgArrow isOpen={isOpen} />
         </div>}
       </div>
       {isOpen && (
         <div style={{ marginLeft: '16px' }}>
-          {subcategory.subsubcategories &&
-            subcategory.subsubcategories.map((subSubCategory) => (
-              <SidebarSubSubCategory key={subSubCategory.name} name={subSubCategory.name} serverName={subSubCategory.serverName} serverPath={currentServerPath} />
+          {!!subsubcategories.length &&
+            subsubcategories.map((subSubCategory) => (
+              <SidebarSubSubCategory key={subSubCategory.name} name={subSubCategory.name} serverName={subSubCategory.name.split(' ').join('_')} serverPath={currentServerPath} />
             ))}
         </div>
       )}

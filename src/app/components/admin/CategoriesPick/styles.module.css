@@ -1,0 +1,39 @@
+.selected {
+    background-color: rgba(76, 255, 163, 0.702);
+    border: 1px solid black;
+}
+
+.clickable {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 25vw;
+}
+
+.main {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.sub {
+    font-size: 1.5rem;
+    margin-left: 1.5vw;
+    font-weight: 500;
+    margin-top: 0.5rem;
+
+    margin-bottom: 0.5rem;
+}
+
+.subsub {
+    font-size: 1.2rem;
+    margin-left: 3vw;
+    font-weight: 300;
+    margin-bottom: 0.5rem;
+
+}

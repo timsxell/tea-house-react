@@ -37,6 +37,8 @@ export default function Header({ }) {
 
     return (
         <header className={`${hamburgerOpenedClass} ${styles.header}`}>
+            <Link href='/admin'>ADMIN</Link>
+            <Link href='/login'>login</Link>
             <div className={styles.leftAndMid}>
                 <div className={styles.left} >
                     <div className={styles.hamburger} onClick={() => setIsHamburgerOpened(!isHamburgerOpened)}>

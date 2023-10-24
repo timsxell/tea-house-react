@@ -7,7 +7,13 @@ const nextConfig = {
                 hostname: 'i.postimg.cc',
                 port: '',
                 pathname: '**'
-            }
+            },
+            {
+                protocol: 'http',
+                hostname: 'localhost',
+                port: '5000',
+                pathname: '**'
+            },
         ]
     }
 }

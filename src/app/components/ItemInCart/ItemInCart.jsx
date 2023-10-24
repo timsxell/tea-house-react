@@ -18,7 +18,7 @@ export default function ItemInCart({
     return (
         <div className={`${styles.item}`}>
             <div className={styles.imageAndName}>
-                <Image src={item.imgSrc} alt={item.name}
+                <Image src={item.imgSrc || 'https://i.postimg.cc/0NLGt35m/1.webp'} alt={item.name}
                     width={170}
                     height={170}
                     style={{ objectFit: "contain", border:'1px solid black'}}

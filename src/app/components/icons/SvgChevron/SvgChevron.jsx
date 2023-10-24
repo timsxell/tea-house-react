@@ -7,7 +7,7 @@ export default function SvgChevron({
     if(pointTo === 'right'){
         return (
             <svg xmlns="http://www.w3.org/2000/svg" width={width} height={height} viewBox="0 0 24 24" fill="none">
-                <path d="M9 5L16 12L9 19" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M9 5L16 12L9 19" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
         )
     }
@@ -15,7 +15,7 @@ export default function SvgChevron({
     else if(pointTo === 'left'){
         return (
             <svg style={{ transform: 'rotate(180deg)' }} xmlns="http://www.w3.org/2000/svg" width={width} height={height} viewBox="0 0 24 24" fill="none">
-                <path d="M9 5L16 12L9 19" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M9 5L16 12L9 19" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
         )
     }

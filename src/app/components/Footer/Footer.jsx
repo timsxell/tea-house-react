@@ -9,14 +9,17 @@ import { usePathname } from 'next/navigation';
 import SvgFacebook from '../icons/SvgFacebook/SvgFacebook';
 import SvgInsta from '../icons/SvgInsta/SvgInsta';
 import SvgTelegram from '../icons/SvgTelegram/SvgTelegram';
-
-import useDeviceSize from '@/hooks/useDeviceSize';
+import dynamic from 'next/dynamic';
 
 
 
 export default function Footer({
 
 }) {
+
+    const MediaQuery = dynamic(() => import("react-responsive"), {
+        ssr: false
+    })
 
     const [isHovered, setIsHovered] = useState(false);
 
@@ -28,67 +31,129 @@ export default function Footer({
         setIsHovered(false);
     };
 
-    let bottomClassName = `${styles.bottom} ${isHovered ? styles.bottomHover : ''}`
-    let bottomTextClassName = `${styles.bottomP} ${isHovered ? styles.bottomHoverP : ''}`
-
-    const [width, height] = useDeviceSize()
-
-    // eslint-disable-next-line
-    // const isMobile = window.innerWidth < 500;
-    const isMobile = width < 500;
-    // eslint-disable-next-line
-    // const isDesktopOrTablet = window.innerWidth >= 500;
-    const isDesktopOrTablet = width >= 500;
-
+    let bottomClassName = `${styles.bottom} ${isHovered ? styles.bottomHover : ''}`;
+    let bottomTextClassName = `${styles.bottomP} ${isHovered ? styles.bottomHoverP : ''}`;
     return (
-        <footer className={styles.footer}>
-            <div className={styles.top}>
-                <div className={styles.left}>
-                    {isDesktopOrTablet && Object.keys(SOCIAL_MEDIA_LINKS).map((key) => (
-                        <a href={SOCIAL_MEDIA_LINKS[key]} target='_blank' key={key}>{key}</a>
-                    ))}
-                    {isMobile && <a href={SOCIAL_MEDIA_LINKS.facebook} target='_blank'>
-                        <SvgFacebook />
-                    </a>}
-                    {isMobile && <a href={SOCIAL_MEDIA_LINKS.instagram} target='_blank'>
-                        <SvgInsta />
-                    </a>}
-                    {isMobile && <a href={SOCIAL_MEDIA_LINKS.telegram} target='_blank'>
-                        <SvgTelegram />
-                    </a>}
 
-                </div>
-                {isDesktopOrTablet && <div className={styles.mid}>
-                    <Link href='/'>
-                        <SvgLogo width={50} height={50} />
-                    </Link>
-                    <a href={`tel:${PHONE_NUMBER}`}>{PHONE_NUMBER}</a>
-                </div>}
-                <div className={styles.right}>
-                    {isMobile && <a href={`tel:${PHONE_NUMBER}`}>{PHONE_NUMBER}</a>}
+        <div>
+            <MediaQuery maxWidth={500}>
+                <footer className={styles.footer}>
+                    <div className={styles.top}>
+                        <div className={styles.left}>
+                            <a href={SOCIAL_MEDIA_LINKS.telegram} target='_blank'>
+                                <SvgTelegram />
+                            </a>
+                            <a href={SOCIAL_MEDIA_LINKS.instagram} target='_blank'>
+                                <SvgInsta />
+                            </a>
+                            <a href={SOCIAL_MEDIA_LINKS.facebook} target='_blank'>
+                                <SvgFacebook />
+                            </a>
 
-                    <a href={GOOGLE_MAPS_LOCATION} target='_blank'>
-                        Mediteranska, 65
-                        <br />
-                        Budva
-                        <br />
-                        Montenegro
-                    </a>
-                </div>
-            </div>
-            {usePathname() === '/' && <div className={bottomClassName}>
-                <p className={bottomTextClassName}>DESIGNED AND DEVELOPED by </p>
-                <a href='https://www.instagram.com/timsxell/'
-                    onMouseEnter={handleHover}
-                    onMouseLeave={handleLeave}
-                    target='_blank'>@timshell</a>
-            </div>}
+                        </div>
+                        <div className={styles.right}>
+                            <a href={`tel:${PHONE_NUMBER}`}>{PHONE_NUMBER}</a>
 
-        </footer>
+                            <a href={GOOGLE_MAPS_LOCATION} target='_blank'>
+                                Mediteranska, 65
+                                <br />
+                                Budva
+                                <br />
+                                Montenegro
+                            </a>
+                        </div>
+                    </div>
+                    {usePathname() === '/' && <div className={bottomClassName}>
+                        <p className={bottomTextClassName}>DESIGNED AND DEVELOPED by </p>
+                        <a href='https://www.instagram.com/timsxell/'
+                            onMouseEnter={handleHover}
+                            onMouseLeave={handleLeave}
+                            target='_blank'>@timshell</a>
+                    </div>}
+
+                </footer>
+            </MediaQuery>
+            <MediaQuery minWidth={500}>
+                <footer className={styles.footer}>
+                    <div className={styles.top}>
+                        <div className={styles.left}>
+                            {Object.keys(SOCIAL_MEDIA_LINKS).map((key) => (
+                                <a href={SOCIAL_MEDIA_LINKS[key]} target='_blank' key={key}>{key}</a>
+                            ))}
+                        </div>
+                        <div className={styles.mid}>
+                            <Link href='/'>
+                                <SvgLogo width={50} height={50} />
+                            </Link>
+                            <a href={`tel:${PHONE_NUMBER}`}>{PHONE_NUMBER}</a>
+                        </div>
+                        <div className={styles.right}>
+                            <a href={GOOGLE_MAPS_LOCATION} target='_blank'>
+                                Mediteranska, 65
+                                <br />
+                                Budva
+                                <br />
+                                Montenegro
+                            </a>
+                        </div>
+                    </div>
+                    {usePathname() === '/' && <div className={bottomClassName}>
+                        <p className={bottomTextClassName}>DESIGNED AND DEVELOPED by </p>
+                        <a href='https://www.instagram.com/timsxell/'
+                            onMouseEnter={handleHover}
+                            onMouseLeave={handleLeave}
+                            target='_blank'>@timshell</a>
+                    </div>}
+
+                </footer>
+            </MediaQuery>
+        </div>
+
     )
 
 }
 
-// {`Mediteranska, 65\n
-//                             Budva\n
-//                             Montenegro`}
+{/* <footer className={styles.footer}>
+<div className={styles.top}>
+    <div className={styles.left}>
+        {isDesktopOrTablet && Object.keys(SOCIAL_MEDIA_LINKS).map((key) => (
+            <a href={SOCIAL_MEDIA_LINKS[key]} target='_blank' key={key}>{key}</a>
+        ))}
+        {isMobile && <a href={SOCIAL_MEDIA_LINKS.facebook} target='_blank'>
+            <SvgFacebook />
+        </a>}
+        {isMobile && <a href={SOCIAL_MEDIA_LINKS.instagram} target='_blank'>
+            <SvgInsta />
+        </a>}
+        {isMobile && <a href={SOCIAL_MEDIA_LINKS.telegram} target='_blank'>
+            <SvgTelegram />
+        </a>}
+
+    </div>
+    {isDesktopOrTablet && <div className={styles.mid}>
+        <Link href='/'>
+            <SvgLogo width={50} height={50} />
+        </Link>
+        <a href={`tel:${PHONE_NUMBER}`}>{PHONE_NUMBER}</a>
+    </div>}
+    <div className={styles.right}>
+        {isMobile && <a href={`tel:${PHONE_NUMBER}`}>{PHONE_NUMBER}</a>}
+
+        <a href={GOOGLE_MAPS_LOCATION} target='_blank'>
+            Mediteranska, 65
+            <br />
+            Budva
+            <br />
+            Montenegro
+        </a>
+    </div>
+</div>
+{usePathname() === '/' && <div className={bottomClassName}>
+    <p className={bottomTextClassName}>DESIGNED AND DEVELOPED by </p>
+    <a href='https://www.instagram.com/timsxell/'
+        onMouseEnter={handleHover}
+        onMouseLeave={handleLeave}
+        target='_blank'>@timshell</a>
+</div>}
+
+</footer> */}

@@ -6,21 +6,11 @@ export const itemsApi = createApi({
     baseQuery: fetchBaseQuery({ baseUrl: BASE_URL }),
     endpoints: (builder) => ({
         getItems: builder.query({
-            query: ({ category, subcategory, subsubcategory }) => {
-                let url = !category
-                    ? `items`
-                    : !subcategory
-                        ? `items?cat=${category}`
-                        : !subsubcategory
-                            ? `items?cat=${category}&sub=${subcategory}`
-                            : `items?cat=${category}&sub=${subcategory}&subsub=${subsubcategory}`
-                return url;
-            }
-        })
+            query: ({ categories, limit, page }) => `item/items?limit=${limit || 99}&page=${page || 1}${categories ? `&category=${categories}`: ''}`
+        }),
     })
 })
-
-export const { useGetItemsQuery, usePrefetch } = itemsApi;
+export const { useGetItemsQuery, usePrefetch, useCreateItemMutation } = itemsApi;
 
 
 

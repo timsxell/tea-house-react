@@ -1,7 +1,6 @@
 'use client'
 
 import styles from './styles.module.css'
-// import store from '../../../../public/images/store.jpg'
 import Image from 'next/image'
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
@@ -33,7 +32,7 @@ export default function HomepageSection({
 
     return (
         <div className={sectionClassName} >
-            <Image alt={'homepage_section_cover_photo'} src={imgUrl} className={styles.image} priority={true} fill={true} style={{ objectFit: 'cover', zIndex: '0', objectPosition: `${imgLeftPos || 0}% ${imgTopPos || 0}%` }} />
+            <Image alt={'homepage_section_cover_photo'} src={imgUrl} sizes='100vw' placeholder='blur' className={styles.image} priority={true} fill={true} style={{ objectFit: 'cover', zIndex: '0', objectPosition: `${imgLeftPos || 0}% ${imgTopPos || 0}%` }} />
             <Link className={styles.card} href={url}
                 style={{top: `${cardTopPos}%`, left: `${cardLeftPos}%`}}
                 onMouseEnter={handleCardHover}

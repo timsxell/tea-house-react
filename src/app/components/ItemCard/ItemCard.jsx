@@ -5,10 +5,10 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { cartSlice } from '@/store/features/cart';
 import { useDispatch } from 'react-redux';
-import { usePathname } from 'next/navigation';
 import { formular } from '@/app/fonts/fonts';
 import { useSelector } from 'react-redux';
 import { isItemInCart } from '@/store/features/cart/selectors';
+import { STATIC_URL } from '@/store/services/serverConstants';
 
 function calcPrice(priceFor100, amount) {
     return ((priceFor100 / 100) * amount).toFixed(2);
@@ -46,15 +46,10 @@ export default function ItemCard({
         300
     ]
 
-    const path = usePathname().split('/');
-    //2
-    const showGrams = item.category !== 'teaware';
-    // const showGrams = path[2] !== 'teaware';
+    const showGrams = item.parentCategoryId !== '040101' || item.parentCategoryId !== '040102' || item.parentCategoryId !== '0402'
 
     const isAdded = useSelector(state => isItemInCart(state)(item.id))
 
-
-    // const [isAdded, setIsAdded] = useState(false);
     const [selectedAmount, setSelectedAmount] = useState(100);
 
     const dispatch = useDispatch();
@@ -67,7 +62,6 @@ export default function ItemCard({
 
     const addToCartClick = () => {
         if (!isAdded) {
-            // setIsAdded(true);
             dispatch(cartSlice.actions.addItem({
                 item: item,
                 amount: selectedAmount,
@@ -76,11 +70,13 @@ export default function ItemCard({
         }  
     }
 
+    // const hasMultipleImages = Array.isArray(item.imgSrc) && item.imgSrc.length > 1;
+    const makeAbsolutePath = (relative) => `${STATIC_URL}${relative}`;
 
     return (
         <div className={isAdded ? `${styles.card} ${styles.cardAdded}` : `${styles.card}`}>
             <Image alt={item.name} className={isAdded ? `${styles.image} ${styles.imageAdded}` : `${styles.image}`}
-                src={item.imgSrc}
+                src={makeAbsolutePath(item.imgSrc[0])}
                 width={290}
                 height={220}
 
